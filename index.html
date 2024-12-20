@@ -6,6 +6,7 @@
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="root"></div>
@@ -14,29 +15,57 @@
       const container = document.getElementById("root");
       const root = ReactDOM.createRoot(container);
 
-      function Header({ name }) {
-        return <h1>Learn React {name ? name : "Good"}😎 </h1>;
-      }
-      root.render(<Header />);
-
       function HomePage() {
-        const students = ["Miya", "Brody", "Layla"];
-        const [likes, setLikes] = React.useState(0);
+        let [angka, setAngka] = React.useState(0);
+        let ToogleButton = () => {
+          let [isActive, setIsActive] = useState(false);
+        };
 
-        function handleclick() {
-          setLikes(likes + 1);
+        function plus() {
+          if (angka < 11) {
+            angka++;
+            setAngka(angka);
+          }
+          if (angka == 11) {
+            setAngka("done");
+          }
+        }
+
+        function minus() {
+          if (angka == 0) {
+            setAngka("done");
+          }
+          if (angka > 0) {
+            angka--;
+            setAngka(angka);
+          }
+        }
+
+        function reset() {
+          angka = 0;
+          setAngka(angka);
         }
 
         return (
           <>
-            <Header name="Night Mode" />
-            <ul>
-              {students.map((student) => (
-                <li key={student}>{student}</li>
-              ))}
-            </ul>
-
-            <button onClick={handleclick}>Like ({likes})</button>
+            <div className="box">
+              <button onClick={minus} disabled={angka == "done"}>
+                -
+              </button>
+              {angka}
+              <button onClick={plus} disabled={angka == "done"}>
+                +
+              </button>
+            </div>
+            <div>
+              <button
+                className="reset"
+                onClick={reset}
+                disabled={angka !== "done"}
+              >
+                Reset
+              </button>
+            </div>
           </>
         );
       }
