@@ -13,7 +13,21 @@
     <script type="text/babel">
       const container = document.getElementById("root");
       const root = ReactDOM.createRoot(container);
-      root.render(<h1>Learn React 😎 </h1>);
+
+      function Header(props) {
+        return <h1>Learn React {props.name}😎 </h1>;
+      }
+      root.render(<Header />);
+
+      function HomePage() {
+        return (
+          <>
+            <Header name="Good" />
+            <Header name="Night" />
+          </>
+        );
+      }
+      root.render(<HomePage />);
     </script>
   </body>
 </html>
