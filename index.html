@@ -21,6 +21,12 @@
 
       function HomePage() {
         const students = ["Miya", "Brody", "Layla"];
+        const [likes, setLikes] = React.useState(0);
+
+        function handleclick() {
+          setLikes(likes + 1);
+        }
+
         return (
           <>
             <Header name="Night Mode" />
@@ -29,6 +35,8 @@
                 <li key={student}>{student}</li>
               ))}
             </ul>
+
+            <button onClick={handleclick}>Like ({likes})</button>
           </>
         );
       }
