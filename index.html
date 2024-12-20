@@ -20,10 +20,15 @@
       root.render(<Header />);
 
       function HomePage() {
+        const students = ["Miya", "Brody", "Layla"];
         return (
           <>
-            <Header />
-            <Header name="Night" />
+            <Header name="Night Mode" />
+            <ul>
+              {students.map((student) => (
+                <li key={student}>{student}</li>
+              ))}
+            </ul>
           </>
         );
       }
