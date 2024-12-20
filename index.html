@@ -14,15 +14,15 @@
       const container = document.getElementById("root");
       const root = ReactDOM.createRoot(container);
 
-      function Header(props) {
-        return <h1>Learn React {props.name}😎 </h1>;
+      function Header({ name }) {
+        return <h1>Learn React {name ? name : "Good"}😎 </h1>;
       }
       root.render(<Header />);
 
       function HomePage() {
         return (
           <>
-            <Header name="Good" />
+            <Header />
             <Header name="Night" />
           </>
         );
