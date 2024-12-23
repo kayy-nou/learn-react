@@ -15,11 +15,13 @@
       const container = document.getElementById("root");
       const root = ReactDOM.createRoot(container);
 
+      function Header({ name }) {
+        return <h1>Learn React {name ? name : "Good"}😎 </h1>;
+      }
+      root.render(<Header />);
+
       function HomePage() {
         let [angka, setAngka] = React.useState(0);
-        let ToogleButton = () => {
-          let [isActive, setIsActive] = useState(false);
-        };
 
         function plus() {
           if (angka < 11) {
@@ -48,6 +50,7 @@
 
         return (
           <>
+            <Header name="Night" />
             <div className="box">
               <button onClick={minus} disabled={angka == "done"}>
                 -
